@@ -1,0 +1,51 @@
+.signinPage {
+	text-align:center;
+}
+
+.text-center-h2 {
+	background-color:black;
+	color:white;
+	width:150px;
+	height:40px;
+	margin:0 auto 20px auto;
+	border-radius:20px 20px 20px 20px;
+}
+
+.signinWrap {
+	width:350px;
+	height:500px;
+	margin:140px auto 180px auto;
+}
+
+.formWrap{
+	text-align:center;
+}
+
+.form-group input{
+	width:250px;
+	height:30px;
+	margin-top:10px;
+}
+
+.form-group-ch {
+	text-align:left;
+	margin-left:50px;
+}
+
+.form-group-ch button{
+	background-color:#666;
+	color:white;
+}
+
+.signUpBtn{
+	width:90px;
+	height:40px;
+	background-color:black;
+	color:white;
+	border-radius:20px 20px 20px 20px;
+}
+
+.mt-20 {
+	text-decoration-line:none;
+	color:black;
+}

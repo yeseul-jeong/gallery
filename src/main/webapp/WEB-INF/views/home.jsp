@@ -21,6 +21,47 @@
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
 <script>
+
+	$(document).ready(function() {
+		$('.works').fadeTo(700,1);
+	})
+	
+	$(document).ready(function() {
+	    $(window).scroll( function(){
+				
+	        $('.artist').each( function(i){
+	            
+	            var bottom_of_element = $(this).offset().top + $(this).outerHeight()/5;
+	            var bottom_of_window = $(window).scrollTop() + $(window).height();
+	            
+	            if( bottom_of_window > bottom_of_element ){
+	                $(this).animate({'opacity':'1'},1300);
+	            }
+	            
+	        }); 
+	    });
+	});
+	
+	$(document).ready(function() {
+	    $(window).scroll( function(){
+				
+	        $('.artist').each( function(i){
+	            
+	            var bottom_of_element = $(this).offset().top + $(this).outerHeight()/5;
+	            var bottom_of_window = $(window).scrollTop() + $(window).height();
+	            
+	            if( bottom_of_window > bottom_of_element ){
+	                $(this).animate({'opacity':'1'},700);
+	            }
+	            
+	        }); 
+	    });
+	});
+	
+	$(document).ready(function() {
+		$('.headerbar').fadeTo(700,1);
+	})
+	
 	$(document).ready(function() {
 		$('.slider').bxSlider({
 			auto : true, //자동으로 애니메이션 시작
@@ -44,6 +85,13 @@
 	});
 </script>
 <style>
+.works{
+	opacity:0;
+}
+
+.artist {
+	opacity:0;
+}
 
 .bx-wrapper {
 	width: 40%;
@@ -95,14 +143,14 @@
 		<p id="headerTitle"><a href="<%=request.getContextPath()%>/">Oxhibition.<a/></p>
 		<p id="headerSub">다른 감각 전시회</p>
 		<ul id="headerleft">
-			<li><a class="hovera" href="<%=request.getContextPath()%>#!">공지사항</a></li>
-			<li><a class="hovera" href="<%=request.getContextPath()%>#!">갤러리</a></li>
-			<li><a class="hovera" href="<%=request.getContextPath()%>#!">방명록</a></li>
+			<li class="menulines"><a href="<%=request.getContextPath()%>/notice/list">공지사항</a></li>
+			<li class="menulines"><a href="<%=request.getContextPath()%>#!">갤러리</a></li>
+			<li class="menulines"><a href="<%=request.getContextPath()%>#!">방명록</a></li>
 		</ul>
 
 		<ul id="headerright">
-			<li><a class="hovera" href="<%=request.getContextPath()%>/signUp.do">회원가입</a></li>
-			<li><a class="hovera" href="<%=request.getContextPath()%>#!">로그인</a></li>
+			<li class="menulines"><a href="<%=request.getContextPath()%>/signUp.do">회원가입</a></li>
+			<li class="menulines"><a href="<%=request.getContextPath()%>/login.do">로그인</a></li>
 		</ul>
 	</div>
 <!-- header end -->

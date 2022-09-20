@@ -1,0 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Oxhibition | 다른 감각 전시회</title>
+
+
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/header.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+<script>
+	
+	$(document).ready(function() {
+		$('.headerbar').fadeTo(700,1);
+	})
+
+</script>
+<style>
+</style>
+
+</head>
+
+<body id="body">
+<div class="wrapper">
+
+<!-- header -->
+	<div class="headerbar">
+		<p id="headerTitle"><a href="<%=request.getContextPath()%>/">Oxhibition.<a/></p>
+		<p id="headerSub">다른 감각 전시회</p>
+		<ul id="headerleft">
+			<li class="menulines"><a href="<%=request.getContextPath()%>/notice/list">공지사항</a></li>
+			<li class="menulines"><a href="<%=request.getContextPath()%>#!">갤러리</a></li>
+			<li class="menulines"><a href="<%=request.getContextPath()%>#!">방명록</a></li>
+		</ul>
+
+		<ul id="headerright">
+			<li class="menulines"><a href="<%=request.getContextPath()%>/signUp.do">회원가입</a></li>
+			<li class="menulines"><a href="<%=request.getContextPath()%>/login.do">로그인</a></li>
+		</ul>
+	</div>
+<!-- header end -->

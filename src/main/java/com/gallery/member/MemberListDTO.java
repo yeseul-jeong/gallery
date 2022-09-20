@@ -15,6 +15,5 @@ public class MemberListDTO {
 	private String email;
 	private Date regDate;
 	private int mLevel;
-	private int currentPoint;
-	
+
 }
