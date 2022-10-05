@@ -19,8 +19,7 @@
 		<!-- <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property> 
 			<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:XE"></property> -->
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl"
-			value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"></property>
+		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@localhost:1521:xe"></property>
 		<property name="username" value="GALLERY"></property>
 		<property name="password" value="GALLERY"></property>
 	</bean>
@@ -32,8 +31,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml"></property>
-		<!-- <property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml"></property> -->
-		
+		<property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml"></property>
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
@@ -45,7 +43,7 @@
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
 		<property name="username" value="yeseulportad@gmail.com" />
-		<property name="password" value="wjddPtmf01066956622"/>
+		<property name="password" value="lzykndluovauxnsw"/>
 		<!-- 보안연결 SSL설정 -->
 		<property name="javaMailProperties">
 			<props>
@@ -60,8 +58,11 @@
 		</property>
 	</bean>
 	
+	 <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    	<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
 	<!-- SCAN -->
 	<mybatis-spring:scan base-package="com.gallery.mapper" />
-	
 	<context:component-scan base-package="com.gallery.util"></context:component-scan>
 </beans>

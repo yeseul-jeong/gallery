@@ -24,11 +24,11 @@
 							<input type="checkbox" class="idcheck" name="saveId" <c:if test="${saveIdCookie != null}">checked</c:if> >
 							<span style="font-size: 11px; position: relative; top: -2px;">아이디 저장</span>
 							<div class="text-center">
-								<button type="submit" class="loginBtn">로그인</button>
+								<button type="submit" class="loginBtn" style="cursor:pointer">로그인</button>
 							</div>
 						</form>
-						<p class="mt-20"><b>Oxhibition</b>이 처음이신가요?☞<a href="signUp.do">회원가입</a></p>
-						<p class="mt-20">비밀번호를 잊으셨나요?☞<a href="forgetPwd.do">비밀번호 찾기</a></p>
+						<p class="mt-20"><b>Oxhibition</b>이 처음이신가요? ☞ <a href="signUp.do"><b>회원가입</b></a></p>
+						<p class="mt-20">비밀번호를 잊으셨나요? ☞ <a href="forgetPwd.do"><b>비밀번호 찾기</b></a></p>
 					</div>
 	</section>
 

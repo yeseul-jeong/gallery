@@ -26,16 +26,17 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+	
 	<!-- Application Loggers -->
-	<!-- <logger name="com.mealkit.main">
+	<logger name="com.gallery.main">
 		<level value="info" />
 	</logger>
-	<logger name="com.mealkit.product">
+	<logger name="com.gallery.notice">
 		<level value="info" />
 	</logger>
-	<logger name="com.mealkit.member">
+	<logger name="com.gallery.member">
 		<level value="info" />
-	</logger> -->
+	</logger>
 	
 
 	<!-- Root Logger -->

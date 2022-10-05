@@ -18,10 +18,26 @@
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="suffix" value=".jsp"/>
+		<!-- <beans:property name="contentType" value="text/html; charset=UTF-8"/> -->
 	</beans:bean>
 	
-	<context:component-scan base-package="com.gallery" />
+	<context:component-scan base-package="com.gallery"/>
+	
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"></beans:property>
+	</beans:bean>
+  
+  <beans:bean id="fileuploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\uploadfiles\\upload">
+		</beans:constructor-arg>
+	</beans:bean>
+
+	<beans:bean id="uploadPath" class="java.lang.String">
+		<beans:constructor-arg value="C:\\upload"></beans:constructor-arg>
+	</beans:bean>
+	
 	<context:component-scan base-package="com.gallery.*" />
 	
 	

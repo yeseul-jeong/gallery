@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="../include/header.jspf"%>
-
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/changePwd.css">
 <style>
 span {
 	font-size: 11px;
@@ -43,13 +44,10 @@ span {
 	});
 </script>
 
-<section class="forget-password-page account">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<div class="block text-center">
-					<h2 class="text-center">비밀번호 변경</h2>
-					<form class="text-center" action="changePwd.do" method="post" id="changPwdForm">
+<section class="changePwdPage">
+	<div class="changePwdWrap">
+					<h2 class="text-center">Change Password</h2>
+					<form class="formWrap" action="changePwd.do" method="post" id="changPwdForm">
 						<p>
 							이메일로 인증코드가 전송되었습니다. <br> 
 							인증코드 확인 후 새로운 비밀번호를 설정하세요.
@@ -75,13 +73,10 @@ span {
 						<div class="text-center">
 							<input type="hidden" id="checkedCode" value="Y"> 
 							<input type="hidden" id="checkedPw" value="Y">
-							<input type="submit" class="btn btn-main text-center" value="변경 요청">
+							<input type="submit" class="changePwdBtn" value="변경 요청" style="cursor:pointer">
 						</div>
 					</form>
 				</div>
-			</div>
-		</div>
-	</div>
 </section>
 
 <%@ include file="../include/footer.jspf"%>

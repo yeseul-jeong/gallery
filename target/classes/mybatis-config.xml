@@ -3,11 +3,12 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<!-- 
-  <typeAliases>
-    <package name="com.mealkit.product"/>    
-    <package name="com.mealkit.board"/>
-  </typeAliases> -->
+	<settings>
+		<setting name="jdbcTypeForNull" value="VARCHAR"/>
+	</settings>
+	<typeAliases>
+		<package name="com.gallery.notice" />
+	</typeAliases>
 
 </configuration>
 

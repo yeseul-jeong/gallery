@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gallery.mapper.NoticeMapper">
-<select id="list" resultType="com.gallery.notice.NoticeVO">
 
-		select nId,mId,title,content,regDate
-		from (select nId,mId,title,content,regDate,
+	<select id="selectNoticelist" resultType="com.gallery.notice.NoticeVO">
+
+		select nId,
+		mId,
+		title,
+		content,
+		regDate,
+		hit
+		from (
+		select nId,
+		mId,
+		title,
+		content,
+		regDate,
+		hit,
 		row_number() over(order by nId desc) as rNum
 		from notice
 		where 1=1
@@ -18,15 +28,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where rNum between #{rowStart} and #{rowEnd}
 		order by nId desc
 
-</select>
+	</select>
 
 	<select id="listCount" resultType="int">
 		SELECT COUNT(nId)
 		FROM notice
 		WHERE 1=1
-		<include refid="search" />
-
-		And cNo > 0
+		And nId > 0
 	</select>
 
 	<select id="read" resultType="com.gallery.notice.NoticeVO">
@@ -46,4 +54,88 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delete">
 		delete from notice where nId = #{nId}
 	</delete>
+
+	<!-- 게시판 글 작성 -->
+	<insert id="write" parameterType="com.gallery.notice.NoticeVO"
+		useGeneratedKeys="true" keyProperty="nId">
+		<selectKey keyProperty="nId" resultType="int" order="BEFORE">
+			SELECT
+			nIdSeq.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO notice ( nId
+		, mId
+		, title
+		, content
+		, regDate )
+		VALUES( #{nId}
+		, #{mId}
+		, #{title}
+		, #{content}
+		, sysdate )
+
+	</insert>
+
+	<insert id="insertFile" parameterType="hashMap" >
+		INSERT INTO
+		NOTICE_FILE(
+		fId,
+		nId,
+		ORG_FILE_NAME,
+		STORED_FILE_NAME,
+		FILE_SIZE
+		)
+		VALUES
+		(
+			fIdSeq.NEXTVAL,
+			#{nId},
+			#{ORG_FILE_NAME},
+			#{STORED_FILE_NAME},
+			#{FILE_SIZE}
+		)
+	</insert>
+
+	<!-- 파일 조회 -->
+	<select id="selectFileList" parameterType="int"
+		resultType="hashMap">
+		SELECT  fId,
+				ORG_FILE_NAME,
+				ROUND(FILE_SIZE/1024,1) AS FILE_SIZE
+		FROM NOTICE_FILE
+		WHERE nId = #{nId}
+		AND DEL_GB = 'N'
+		ORDER BY fId ASC
+	</select>
+
+	<!-- 파일 다운로드 -->
+	<select id="selectFileInfo" parameterType="hashMap"
+		resultType="hashMap">
+		SELECT
+			STORED_FILE_NAME,
+			ORG_FILE_NAME
+		FROM NOTICE_FILE
+		WHERE
+		fId=#{fId}
+	</select>
+
+	<update id="updateFile" parameterType="hashMap">
+		UPDATE NOTICE_FILE SET
+		DEL_GB = 'Y'
+		WHERE fId=#{fId}
+	</update>
+
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND title LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND content LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">AND mId LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tc'.toString()">AND (title LIKE '%' || #{keyword} || '%') or (content
+				LIKE '%' || #{keyword} || '%')</if>
+		</if>
+	</sql>
+	
+	<update id="noticeHit" parameterType="int">
+    	UPDATE notice SET
+    	hit = hit+1
+    	WHERE nId = #{nId}
+    </update>
 </mapper>

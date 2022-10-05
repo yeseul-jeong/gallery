@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.gallery.mapper.MemberMapper">
 
-	<resultMap type="com.mealkit.member.MemberDTO" id="member">
+	<resultMap type="com.gallery.member.MemberDTO" id="member">
 		<result column="mNo" property="mNo" />
 		<result column="mId" property="mId" />
 		<result column="pw" property="pw" />
@@ -24,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<insert id="submitSignUp">
 		insert into member(mNo, mId, pw, mName, phone, email, regDate)
-			values(mNo_seq.nextval, #{mId}, #{pw}, #{mName}, #{phone}, #{email}, sysdate)			
+			values(mNoSeq.nextval, #{mId}, #{pw}, #{mName}, #{phone}, #{email}, sysdate)			
 	</insert>
 
 	<select id="checkUniqueId" resultType="int">
@@ -58,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		    where mId=#{mId}
 	</update>
 	
-	<select id="selectMember" resultType="com.mealkit.member.MemberDTO">
+	<select id="selectMember" resultType="com.gallery.member.MemberDTO">
 		select * from member where mId=#{mId}
 	</select>
 
@@ -96,7 +94,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  </if>
 	</sql>
 
-	<select id="selectMemberList" resultType="com.mealkit.member.MemberListDTO">
+	<select id="selectMemberList" resultType="com.gallery.member.MemberListDTO">
 	<![CDATA[
 		select * from(
  			select rownum rn, mNo, mId, mName, mLevel, regDate from(

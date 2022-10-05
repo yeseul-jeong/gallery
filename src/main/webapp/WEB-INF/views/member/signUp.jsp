@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../include/header.jspf"%>
 <!DOCTYPE html>
 <html>
@@ -67,7 +66,7 @@ span{
 			<input type="text" id="VerificationCode" class="form-control"  placeholder="인증코드" disabled="disabled">                  
             </div>
             <div class="form-group-ch">
-            	<button type="button" id="emailSendBtn" class="gradient-btn" disabled="disabled">본인 확인</button>
+            	<button type="button" id="emailSendBtn" class="gradient-btn" disabled="disabled" style="cursor:pointer">본인 확인</button>
               <span id="codeCheckText">이메일 본인 인증이 필요합니다.<br/>    본인 확인 버튼을 클릭하세요.</span> 
             </div>
             <div class="form-group">
@@ -80,10 +79,10 @@ span{
             <input type="hidden" name="isUniqueEmail" value="false">
             <br>
             <div class="text-center">
-              <button type="button" class="signUpBtn" onclick="checkSignupForm();">회원가입</button>
+              <button type="button" class="signUpBtn" onclick="checkSignupForm();" style="cursor:pointer">회원가입</button>
             </div>
           </form>
-          <p class="mt-20">이미 계정이 있으신가요? ☞<a href="login.do"> 로그인</a></p> 
+          <p class="mt-20">이미 계정이 있으신가요? ☞<a href="login.do"> <b>로그인</b></a></p> 
           </div>   
 </section>
 

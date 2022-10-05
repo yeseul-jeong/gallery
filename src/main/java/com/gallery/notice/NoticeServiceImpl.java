@@ -20,10 +20,10 @@ public class NoticeServiceImpl implements NoticeService {
 	private NoticeMapper noticeMapper;
 
 	@Override
-	public void write(NoticeVO vo, MultipartHttpServletRequest communityRequest) throws Exception {
+	public void write(NoticeVO vo, MultipartHttpServletRequest mpRequest) throws Exception {
 		noticeMapper.write(vo);
 
-		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(vo, communityRequest);
+		List<Map<String, Object>> list = fileUtils.parseInsertFileInfo(vo, mpRequest);
 		int size = list.size();
 		for (int i = 0; i < size; i++) {
 			noticeMapper.insertFile(list.get(i));
@@ -32,6 +32,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public NoticeVO read(Integer nId) throws Exception {
+			noticeMapper.noticeHit(nId);
 		return noticeMapper.read(nId);
 	}
 
@@ -47,7 +48,7 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public List<NoticeVO> list(SearchCriteria scri) throws Exception {
-		return  noticeMapper.list(scri);
+		return  noticeMapper.selectNoticelist(scri);
 	}
 
 	@Override
@@ -92,5 +93,12 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int adminListCount(SearchCriteria scri) throws Exception {
 		return noticeMapper.adminListCount(scri);
+	}
+	
+	
+	/* 수정 */
+	@Override
+	public void updateFile(Map<String, Object> map) throws Exception {
+		noticeMapper.updateFile(map);
 	}
 }

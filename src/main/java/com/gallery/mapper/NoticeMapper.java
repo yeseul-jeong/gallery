@@ -17,7 +17,7 @@ public interface NoticeMapper {
 
 	public void delete(Integer nId) throws Exception;
 
-	public List<NoticeVO> list(SearchCriteria scri) throws Exception;
+	public List<NoticeVO> selectNoticelist(SearchCriteria scri) throws Exception;
 	
 	public int listCount(SearchCriteria scri) throws Exception;
 	
@@ -30,6 +30,8 @@ public interface NoticeMapper {
 	public void updateFile(Map<String, Object> map) throws Exception;
 	
 	public List<NoticeVO> adminList(SearchCriteria scri) throws Exception;
+	
+	public void noticeHit (int nId) throws Exception;
 	
 	public int adminListCount(SearchCriteria scri) throws Exception;
 }

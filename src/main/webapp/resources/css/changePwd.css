@@ -1,0 +1,51 @@
+.changePwdPage {
+	text-align:center;
+}
+
+h2 {
+	background-color:black;
+	font-size:20px;
+	color:white;
+	width:200px;
+	height:40px;
+	margin:0px auto 20px auto;
+	border-radius:20px 20px 20px 20px;
+}
+
+.changePwdWrap {
+	width:360px;
+	height:500px;
+	margin:180px auto 0px auto;
+}
+
+.formWrap{
+	text-align:center;
+}
+
+.form-group input{
+	width:250px;
+	height:30px;
+	margin-top:10px;
+}
+.form-group-ch {
+	text-align:left;
+	margin-left:50px;
+}
+
+.idcheck{
+	margin:20px 0 20px 0;
+}
+
+.changePwdBtn{
+	width:90px;
+	height:40px;
+	background-color:black;
+	color:white;
+	border-radius:20px 20px 20px 20px;
+	margin-bottom:20px;
+}
+
+.mt-20 a{
+	text-decoration-line:none;
+	color:black;
+}

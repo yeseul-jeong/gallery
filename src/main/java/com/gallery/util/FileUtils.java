@@ -31,7 +31,7 @@ public class FileUtils {
 		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String, Object> listMap = null;
 		
-		int cNo = (int)noticeVO.getNId();
+		int nId = (int)noticeVO.getnId();
 		
 		File file = new File(filePath);
 		if(file.exists() == false) {
@@ -48,7 +48,7 @@ public class FileUtils {
 				file = new File(filePath + storedFileName);
 				multipartFile.transferTo(file);
 				listMap = new HashMap<String, Object>();
-				listMap.put("CNO", cNo);
+				listMap.put("nId", nId);
 				listMap.put("ORG_FILE_NAME", originalFileName);
 				listMap.put("STORED_FILE_NAME", storedFileName);
 				listMap.put("FILE_SIZE", multipartFile.getSize());
@@ -66,7 +66,7 @@ public class FileUtils {
 		String storedFileName = null; 
 		List<Map<String,Object>> list = new ArrayList<Map<String,Object>>();
 		Map<String, Object> listMap = null; 
-		int nId = noticeVO.getNId();
+		int nId = noticeVO.getnId();
 		while(iterator.hasNext()){ 
 			multipartFile = mpRequest.getFile(iterator.next()); 
 			if(multipartFile.isEmpty() == false){ 
@@ -76,7 +76,7 @@ public class FileUtils {
 				multipartFile.transferTo(new File(filePath + storedFileName)); 
 				listMap = new HashMap<String,Object>();
 				listMap.put("IS_NEW", "Y");
-				listMap.put("NID", nId); 
+				listMap.put("nId", nId); 
 				listMap.put("ORG_FILE_NAME", originalFileName);
 				listMap.put("STORED_FILE_NAME", storedFileName); 
 				listMap.put("FILE_SIZE", multipartFile.getSize()); 
@@ -87,7 +87,7 @@ public class FileUtils {
 			for(int i = 0; i<fileNames.length; i++) {
 					listMap = new HashMap<String,Object>();
                     listMap.put("IS_NEW", "N");
-					listMap.put("FILE_NO", files[i]); 
+					listMap.put("fId", files[i]); 
 					list.add(listMap); 
 			}
 		}

@@ -58,6 +58,7 @@ public class Criteria {
 		return rowEnd;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Criteria [page=" + page + ", " + "perPageNum=" + perPageNum + "]";

@@ -44,12 +44,12 @@ public class MemberController {
 	public String submitLogin(MemberDTO member, HttpServletRequest request, HttpServletResponse response) throws Exception {		
 		MemberDTO loginData = memberService.submitLogin(member); 			
 		if (loginData == null) // 비밀번호 틀리면 null값 들어옴		
-			return alertMsgAndGoUrl(request, "로그인 오류! ID와 비밀번호를 확인해주세요~!!", "login.do");	
-		if (loginData.getMLevel() == -1) // 회원등급 -1 은 탈퇴한 계정
-			return alertMsgAndGoUrl(request, "탈퇴한 계정입니다. 다른 ID로 로그인해주세요~!!", "login.do");	
+			return alertMsgAndGoUrl(request, "ID와 비밀번호를 확인해주세요.", "login.do");	
+		if (loginData.getmLevel() == -1) // 회원등급 -1 은 탈퇴한 계정
+			return alertMsgAndGoUrl(request, "탈퇴한 계정입니다.", "login.do");	
 		HttpSession session = request.getSession();
 		session.setAttribute("member", loginData); // 회원가입 완료되면 해당 정보로 로그인도 해주기
-		setCookieForSaveId(response, request.getParameter("saveId"), loginData.getMId()); // 아이디저장 체크박스 확인 후, 쿠키 생성
+		setCookieForSaveId(response, request.getParameter("saveId"), loginData.getmId()); // 아이디저장 체크박스 확인 후, 쿠키 생성
 		return "redirect:/";
 	}
 	
@@ -98,16 +98,16 @@ public class MemberController {
 	@RequestMapping(value = "/checkUniqueId.do")
 	@ResponseBody
 	public int checkUniqueId(String mId) throws Exception {
-	    logger.info("ID 중복 검사: {}", mId);
-	    logger.info("ID 중복 검사 결과: {}", memberService.checkUniqueId(mId));
+	    // logger.info("ID 중복 검사: {}", mId);
+	    // logger.info("ID 중복 검사 결과: {}", memberService.checkUniqueId(mId));
 		return memberService.checkUniqueId(mId);
 	}
 
 	@RequestMapping(value = "/checkUniqueEmail.do")
 	@ResponseBody
 	public int checkUniqueEmail(String email) throws Exception {
-	    logger.info("이멜 중복 검사: {}", email);
-        logger.info("이멜 중복 검사 결과: {}", memberService.checkUniqueEmail(email));
+	    // logger.info("이멜 중복 검사: {}", email);
+        // logger.info("이멜 중복 검사 결과: {}", memberService.checkUniqueEmail(email));
 		return memberService.checkUniqueEmail(email);
 	}
 
@@ -149,7 +149,7 @@ public class MemberController {
 
     	if(member == null || !member.getEmail().equals(email)) {
     		return alertMsgAndGoUrl(request, "회원정보를 찾을 수 없습니다. 아이디와 입력값을 확인해주세요.", "forgetPwd.do");
-    	} else if(member.getMLevel() == -1) {
+    	} else if(member.getmLevel() == -1) {
     		return alertMsgAndGoUrl(request, "탈퇴한 회원정보입니다.", "forgetPwd.do");
     	} else {
     		String VerificationCode = mailService.setMail(email);
@@ -211,7 +211,7 @@ public class MemberController {
 	@RequestMapping(value = "/updateMyInfo.do", method = RequestMethod.POST)
 	public String updateMyInfo(MemberDTO member, HttpSession session, HttpServletRequest request) throws Exception {
 		memberService.updateMyInfo(member);
-		MemberDTO updateMember = memberService.selectMember(member.getMId());
+		MemberDTO updateMember = memberService.selectMember(member.getmId());
 		session.setAttribute("member", updateMember);
 		return alertMsgAndGoUrl(request, "수정이 완료되었습니다.", "myPage.do");
 	}
@@ -222,7 +222,7 @@ public class MemberController {
 		MemberDTO member = (MemberDTO) session.getAttribute("member");
 		member.setPw(pw);
 		memberService.updatePwd(member);
-		MemberDTO updateMember = memberService.selectMember(member.getMId());
+		MemberDTO updateMember = memberService.selectMember(member.getmId());
 		session.setAttribute("member", updateMember);
 		return alertMsgAndGoUrl(request, "변경이 완료되었습니다.", "myPage.do");
 	}

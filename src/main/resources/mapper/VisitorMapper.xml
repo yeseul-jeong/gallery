@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gallery.mapper.VisitorMapper">
+
+	<select id="selectlist" resultType="com.gallery.visitor.VisitorVO">
+	
+		select * from visitor
+		order by vId desc
+		<!-- select vId,
+		mId,
+		content,
+		regDate
+		from (
+		select vId,
+		mId,
+		content,
+		regDate
+		row_number() over(order by vId desc) as rNum
+		from notice
+		where 1=1
+
+		) mp
+		where rNum between #{rowStart} and #{rowEnd}
+		order by vId desc -->
+
+	</select>
+
+	<select id="listCount" resultType="int">
+		SELECT COUNT(vId)
+		FROM visitor
+		WHERE 1=1
+		And vId > 0
+	</select>
+
+	<select id="read" resultType="com.gallery.visitor.VisitorVO">
+		select
+		vId,mId,content
+		from
+		visitor
+		where vId = #{vId}
+	</select>
+
+	<update id="update">
+		update visitor set content
+		=#{content}, regDate = sysdate
+		where vId = #{vId}
+	</update>
+
+	<delete id="delete">
+		delete from visitor where vId = #{vId}
+	</delete>
+
+	<!-- 게시판 글 작성 -->
+	<insert id="write" parameterType="com.gallery.visitor.VisitorVO"
+		useGeneratedKeys="true" >
+		INSERT INTO visitor ( vId
+		, mId
+		, content
+		, regDate )
+		VALUES( vIdSeq.NEXTVAL
+		, #{mId}
+		, #{content}
+		, sysdate )
+
+	</insert>
+
+</mapper>

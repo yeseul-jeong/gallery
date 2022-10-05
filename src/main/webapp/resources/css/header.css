@@ -70,6 +70,15 @@
 	color:white;
 }
 
+.loginMenu a{
+	text-decoration-line:none;
+	color:black;
+}
+
+.loginMenu a:hover {
+ 	background-color:black;
+	color:white;
+}
 /* header end */
 
 

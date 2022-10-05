@@ -35,30 +35,29 @@ public class NoticeController {
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
-	public String writePOST(NoticeVO vo, MultipartHttpServletRequest communityRequest,
+	public String writePOST(NoticeVO vo, MultipartHttpServletRequest mpRequest,
 			RedirectAttributes rttr) throws Exception {
 
 		logger.info("write post ...........");
 		logger.info(vo.toString());
 
-		service.write(vo, communityRequest);
+		service.write(vo, mpRequest);
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/community/list";
+		return "redirect:/notice/list";
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
-
-		logger.info("show all list......................");
+	public String list(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
 
 		model.addAttribute("list", service.list(scri));
 
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(scri);
 		pageMaker.setTotalCount(service.listCount(scri));
-
 		model.addAttribute("pageMaker", pageMaker);
+		
+		return "notice/list";
 	}
 
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
@@ -77,14 +76,12 @@ public class NoticeController {
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/community/list";
+		return "redirect:/notice/list";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void modifyGET(int nId, Model model) throws Exception {
-
 		model.addAttribute("NoticeVO", service.read(nId));
-
 		List<Map<String, Object>> fileList = service.selectFileList(nId);
 		model.addAttribute("file", fileList);
 	}
@@ -94,24 +91,24 @@ public class NoticeController {
 			@RequestParam(value = "fileNoDel[]") String[] files,
 			@RequestParam(value = "fileNameDel[]") String[] fileNames, MultipartHttpServletRequest mpRequest)
 			throws Exception {
-
+		
 		logger.info("mod post............");
-
+		
 		service.update(vo, files, fileNames, mpRequest);
 		rttr.addFlashAttribute("msg", "SUCCESS");
-
-		return "redirect:/community/list";
+		return "redirect:/notice/list";
 	}
 
 	@RequestMapping(value = "/fileDown")
 	public void fileDown(@RequestParam Map<String, Object> map, HttpServletResponse response) throws Exception {
 		Map<String, Object> resultMap = service.selectFileInfo(map);
+		
 		String storedFileName = (String) resultMap.get("STORED_FILE_NAME");
 		String originalFileName = (String) resultMap.get("ORG_FILE_NAME");
 
 		// 파일을 저장했던 위치에서 첨부파일을 읽어 byte[]형식으로 변환한다.
 		byte fileByte[] = org.apache.commons.io.FileUtils
-				.readFileToByteArray(new File("C:\\Community\\file\\" + storedFileName));
+				.readFileToByteArray(new File("C:\\Notice\\file\\" + storedFileName));
 
 		response.setContentType("application/octet-stream");
 		response.setContentLength(fileByte.length);
@@ -122,18 +119,5 @@ public class NoticeController {
 		response.getOutputStream().close();
 	}
 
-	@RequestMapping(value = "/adminBoard", method = RequestMethod.GET)
-	public void adminlist(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {
-
-		logger.info("show all list......................");
-
-		model.addAttribute("adminList", service.adminList(scri));
-
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(scri);
-		pageMaker.setTotalCount(service.adminListCount(scri));
-
-		model.addAttribute("pageMaker", pageMaker);
-	}
 	
 }

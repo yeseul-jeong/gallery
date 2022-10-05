@@ -1,0 +1,143 @@
+
+/* 메인헤더 */
+.pageWrap{
+	margin:70px;
+}
+.page-header{
+	
+}
+.page-name {
+	background-color:black;
+	color:white;
+	width:150px;
+	height:40px;
+	text-align:center;
+	border-radius:20px 20px 20px 20px;
+	margin:0 auto 40px auto;
+}
+/* 메인헤더 */
+
+
+/* 글 작성 */
+.writeWrap{
+	margin:70px auto 70px auto;
+	background-color:red;
+	width:800px;
+	height:80px;
+}
+
+
+.formWrap {
+	width:100%;
+	height:80px;
+	background-color:blue;
+}
+
+.form-group{
+	height:80px;
+}
+
+.contentWrap{
+	background-color:green;
+	float:left;
+	width:70%;
+	height:80px;
+}
+
+.form-content {
+	width:550px;
+	height:80px;
+}
+
+.contentWriteTable{
+	background-color:red;
+}
+
+/* 
+.contentWriteTable .writeBtnWrap {
+	background-color:black;
+	width:30%;
+	height:80px;
+} */
+
+.writeBtn{
+	text-decoration-line:none;
+	background-color:black;
+	color:white;
+	width:80px;
+	height:80px;
+	float:right;
+}
+
+/* 글 작성 */
+
+/* 글 목록 */
+.containWrap {
+	width:100%;
+}
+
+.table {
+	margin:0 auto 30px auto;
+	padding:10px 0 20px 90px;
+	/* border:1px solid black; */
+
+}
+
+th, tr{
+	height:40px;
+	text-align:left;	
+}
+
+td a{
+	text-decoration-line:none;
+	color:black;
+}
+
+.search {
+	margin:0 auto 0 auto;
+	text-align:center;
+}
+
+.box-footer {
+	width:850px;
+	margin:0 auto 50px auto;
+	text-align:center;
+}
+
+.pagination {
+	list-style:none;
+	padding: 6px;
+	text-align:center;
+}
+
+.pagination li {
+	width:25px;
+	height:30px;
+	float:left;
+}
+
+.pagination li a{
+	text-decoration-line:none;
+	color:white;
+	background-color:black;
+	width:25px;
+	height:30px;
+	margin-right:10px;
+	float:left;
+}
+
+.pagination li a:active{
+	color:black;
+}
+
+#searchBtn {
+	background-color:black;
+	color:white;
+	padding:3px 10px 3px 10px;
+}
+
+#write_btn{
+	width:850px;
+	margin:0 auto 0 auto;
+	text-align:right;
+}
