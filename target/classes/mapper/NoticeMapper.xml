@@ -80,6 +80,7 @@
 		NOTICE_FILE(
 		fId,
 		nId,
+		regDate,
 		ORG_FILE_NAME,
 		STORED_FILE_NAME,
 		FILE_SIZE
@@ -88,6 +89,7 @@
 		(
 			fIdSeq.NEXTVAL,
 			#{nId},
+			sysdate,
 			#{ORG_FILE_NAME},
 			#{STORED_FILE_NAME},
 			#{FILE_SIZE}
@@ -107,14 +109,11 @@
 	</select>
 
 	<!-- 파일 다운로드 -->
-	<select id="selectFileInfo" parameterType="hashMap"
-		resultType="hashMap">
+	<select id="selectFileInfo" parameterType="hashMap" resultType="hashMap">
 		SELECT
-			STORED_FILE_NAME,
-			ORG_FILE_NAME
+			STORED_FILE_NAME, ORG_FILE_NAME
 		FROM NOTICE_FILE
-		WHERE
-		fId=#{fId}
+		WHERE fId=#{fId}
 	</select>
 
 	<update id="updateFile" parameterType="hashMap">

@@ -40,8 +40,8 @@
 			<ul id="headerleft">
 				<li class="menulines"><a
 					href="<%=request.getContextPath()%>/notice/list.do">공지사항</a></li>
-				<li class="menulines"><a href="<%=request.getContextPath()%>#!">갤러리</a></li>
-				<li class="menulines"><a href="<%=request.getContextPath()%>/visitor/list.do">방명록</a></li>
+				<li class="menulines"><a href="<%=request.getContextPath()%>/gallery/list.do">갤러리</a></li>
+				<%-- <li class="menulines"><a href="<%=request.getContextPath()%>/visitor/list.do">방명록</a></li> --%>
 			</ul>
 
 			<ul id="headerright">

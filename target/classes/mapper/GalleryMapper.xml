@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gallery.mapper.GalleryMapper">
+
+	<select id="selectGalleryList" resultType="com.gallery.gallery.GalleryVO">
+		select a.gId, a.gName, a.gDesc, a.thumbnail, a.image, a.regDate, a.workDate, a.aId ,b.aName
+		from gallery a, artist b
+		where a.aId = b.aId
+		order by gId desc
+	</select>
+
+	<select id="selectGalleryDetail" resultType="com.gallery.gallery.GalleryVO">
+		select a.gId, a.gName, a.gDesc, a.thumbnail, a.image, a.regDate, a.workDate, a.aId ,b.aName, b.aDesc
+		from gallery a, artist b
+		where a.aId = b.aId
+		and gId=#{gId}
+	</select>
+
+	<select id="selectByArtist" resultType="com.gallery.gallery.GalleryVO">
+		select * from gallery
+		where aId=#{aId}
+	</select>
+
+	<insert id="insert" parameterType="com.gallery.gallery.GalleryVO">
+		insert into gallery(
+		gId
+		,gName
+		,regDate
+		,thumbnail
+		,image
+		,workDate
+		,gDesc
+		,aId
+		) values (
+		gIdSeq.NEXTVAL
+		, #{gName}
+		, sysdate
+		, #{thumbnail}
+		, #{image}
+		, sysdate
+		, #{gDesc}
+		, #{aId}
+		)
+	</insert>
+
+	<update id="updateGallery">
+		update gallery
+		set
+		gName = #{gName}
+		, aId=#{aId}
+		, workDate=#{workDate}
+		, gDesc=#{gDesc}
+		where
+		gId=#{gId}
+	</update>
+
+	<delete id="delete">
+		delete from gallery where gId = #{gId}
+	</delete>
+
+	<select id="selectListWithPaging" resultType="com.gallery.gallery.GalleryVO">
+	<![CDATA[
+          select
+              *
+          from
+              (                  
+                select rownum rn, a.gId, a.gName, a.gDesc, a.thumbnail, a.image, a.regDate, a.workDate, a.aId ,b.aName
+					from gallery a, artist b
+				where a.aId = b.aId
+				and rownum <= #{page} * #{perPageNum}
+              )
+          where rn > (#{page}-1) * #{perPageNum}
+    ]]>
+	</select>
+
+<!--   select 
+                      rownum rn, gId, gName, regDate, thumbnail, image, workDate, gDesc, aId
+                  from
+                      gallery
+                  where rownum <= #{page} * #{perPageNum} -->
+                  
+	<select id="countPaging" resultType="int">
+		select
+		count(gId)
+		from
+		gallery
+	</select>
+
+
+
+	<select id="search" parameterType="String"
+		resultType="com.gallery.gallery.GalleryVO">
+	<![CDATA[
+		select * from gallery where gName like CONCAT('%' || #{keyword}, '%') order by gId desc
+	]]>
+	</select>
+
+
+
+	<sql id="searchSql">
+		<if test="searchType != null">
+			<if test="searchType == 'n'.toString()">
+				and gName like CONCAT('%' || #{keyword}, '%')
+			</if>
+			<if test="searchType == 'b'.toString()">
+				and aName like CONCAT('%' || #{keyword}, '%')
+			</if>
+			<if test="searchType == 'd'.toString()">
+				and gDesc like CONCAT('%' || #{keyword}, '%')
+			</if>
+			<if test="searchType == 'nb'.toString()">
+				and ( gName like CONCAT('%' || #{keyword}, '%') 
+				OR aName like CONCAT('%' || #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'nd'.toString()">
+				and ( gName like CONCAT('%' || #{keyword}, '%') 
+				OR gDesc like CONCAT('%' || #{keyword}, '%'))
+			</if>
+		</if>
+	</sql>
+
+
+
+</mapper>

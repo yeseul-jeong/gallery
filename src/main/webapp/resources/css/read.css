@@ -25,6 +25,7 @@
 }
 
 label {
+	color:#777;
 	text-align:left;
 	line-height:35px;
 }
@@ -56,4 +57,82 @@ label {
 	color:white;
 	height:30px;
 	padding:3px 10px 3px 10px;
+}
+
+.commentTitle{
+	width:45%;
+	margin:0 auto 0 auto;
+	color:#777;
+}
+.line {
+	width:45%;
+}
+/* 댓글 */
+.comment{
+	width:45%;
+	margin:0 auto 30px auto;
+}
+
+.commentList{
+	font-size:0.9em;
+	color:#777;
+}
+
+.commentContent{
+	font-size:1em;
+	color:black;
+}
+
+.commentFormWrap{
+	width:45%;
+	margin:20px auto 100px auto;
+}
+
+.commentWriter {
+	font-size:0.9em;
+}
+
+#content {
+	width:88%;
+	height:50px;
+	float:left;
+}
+
+.commentNlogBtn {
+	float:right;
+	width:10%;
+	height:50px;
+	background-color:black;
+	color:white;
+	border-radius:3px;
+}
+
+.commentWriteBtn {
+	float:right;
+	width:10%;
+	height:50px;
+	background-color:black;
+	color:white;
+	border-radius:3px;
+}
+
+.commentButtonWrap{
+	float:right;
+}
+.commentUpdateBtn {
+	color:#444;
+	font-size:0.8em;
+	text-align:center;
+	background-color:black;
+	color:white;
+	height:30px;
+}
+
+.commentDeleteBtn {
+	color:#444;
+	font-size:0.8em;
+	text-align:center;
+	background-color:black;
+	color:white;
+	height:30px;
 }

@@ -5,7 +5,7 @@
 
 <%@ include file="../include/header.jspf"%>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/list.css">
+	href="<%=request.getContextPath()%>/resources/css/noticeList.css">
 <style type="text/css">
 #keywordInput {
 	border-radius: 0;

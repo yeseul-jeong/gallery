@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -11,7 +10,7 @@
 
 <%@ include file="./include/header.jspf"%>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/css/header.css">
+	href="<%=request.getContextPath()%>/resources/css/home.css">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script
@@ -93,7 +92,7 @@
 																					{
 																						'opacity' : '1'
 																					},
-																					600);
+																					800);
 																}
 
 															});
@@ -176,61 +175,32 @@
 
 </head>
 
-<body id="body">
+<body class="body">
 	<div class="wrapper">
-
-		<!-- header -->
-		<%-- <div class="headerbar">
-			<p id="headerTitle">
-				<a href="<%=request.getContextPath()%>/">Oxhibition.<a />
-			</p>
-			<p id="headerSub">다른 감각 전시회</p>
-			<ul id="headerleft">
-				<li class="menulines"><a
-					href="<%=request.getContextPath()%>/notice/list">공지사항</a></li>
-				<li class="menulines"><a href="<%=request.getContextPath()%>#!">갤러리</a></li>
-				<li class="menulines"><a href="<%=request.getContextPath()%>#!">방명록</a></li>
-			</ul>
-
-			<ul id="headerright">
-				<c:if test="${member == null}">
-					<li class="menulines"><a
-						href="<%=request.getContextPath()%>/signUp.do">회원가입</a></li>
-					<li class="menulines"><a
-						href="<%=request.getContextPath()%>/login.do">로그인</a></li>
-				</c:if>
-				<c:if test="${member != null}">
-					<li class="loginMenu">안녕하세요, <b>${member.mName}</b>님</li>
-					<li><a href="<%=request.getContextPath()%>/checkPwd.do">My Page</a></li>
-					<li class="loginMenu"><a href="<%=request.getContextPath()%>/logout.do"><b>Logout</b></a></li>
-				</c:if>
-			</ul>
-		</div> --%>
-		<!-- header end -->
 
 		<!-- home -->
 		<div class="works">
 			<p class="workTitle">an works of exhibition</p>
 			<div class="slider">
 				<div class="sliderContents">
-					<img
+					<a href="<%=request.getContextPath()%>/gallery/detail?gId=77"><img
 						src="<%=request.getContextPath()%>/resources/images/main/lastisland.jpg"
-						title="정예슬 | 마지막 제주">
+						title="정예슬 | 마지막 제주"></a>
 				</div>
 				<div class="sliderContents">
-					<img
+					<a href="<%=request.getContextPath()%>/gallery/detail?gId=78"><img
 						src="<%=request.getContextPath()%>/resources/images/main/reunion.jpg"
-						title="정예슬 | 재회">
+						title="Olivia Dean | 재회"></a>
 				</div>
 				<div class="sliderContents">
-					<img
+					<a href="<%=request.getContextPath()%>/gallery/detail?gId=82"><img
 						src="<%=request.getContextPath()%>/resources/images/main/suddenly.jpg"
-						title="정예슬 | 문득 들었던 생각">
+						title="정예슬 | 문득 들었던 생각"></a>
 				</div>
 				<div class="sliderContents">
-					<img
+					<a href="<%=request.getContextPath()%>/gallery/detail?gId=81"><img
 						src="<%=request.getContextPath()%>/resources/images/main/tearful.jpg"
-						title="정예슬 | 눈물 흘리는 소녀">
+						title="Olivia Dean | 눈물 흘리는 소녀"></a>
 				</div>
 			</div>
 		</div>
@@ -253,33 +223,8 @@
 		<!-- home end -->
 		
 		
-		<!-- footer -->
-
-		<%-- <footer class="footerbar">
-			<div class="footerdiv">
-				<ul class="footer-menu text-uppercase">
-					<li>
-						<a href="<%=request.getContextPath()%>">CONTACT</a>
-					</li>
-					<li>
-						<a href="<%=request.getContextPath()%>/product/listAll">SHOP</a>
-					</li>
-					<li>
-						<a href="<%=request.getContextPath()%>">Pricing</a>
-					</li>
-					<li>
-						<a href="<%=request.getContextPath()%>">PRIVACY POLICY</a>
-					</li>
-				</ul>
-				<p class="copyright-text">Copyright &copy;2021, Designed &amp;
-					Developed by Jeong-yeseul</p>
-				<p class="copyright-text">정예슬 개인 프로젝트 | 온라인 전시회 Oxhibition</p>
-
-			</div>
-		</footer> --%>
-		
-		<%@ include file="./include/footer.jspf"%>
 	</div>
+		<%@ include file="./include/footer.jspf"%>
 </body>
 </html>
 <!-- footer end -->

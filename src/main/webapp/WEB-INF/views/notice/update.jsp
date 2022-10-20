@@ -39,14 +39,8 @@
 
 	function fn_addFile() {
 		var fileIndex = 1;
-		//$("#fileIndex").append("<div><input type='file' style='float:left;' name='file_"+(fileIndex++)+"'>"+"<button type='button' style='float:right;' id='fileAddBtn'>"+"추가"+"</button></div>");
-		$("#fileAdd_btn")
-				.on(
-						"click",
-						function() {
-							$("#fileIndex")
-									.append(
-											"<div class='upload-file'><input type='file' style='float:left;' name='file_"
+		$("#fileAdd_btn").on("click",function() {
+			$("#fileIndex").append("<div class='upload-file'><input type='file' style='float:left;' name='file_"
 													+ (fileIndex++)
 													+ "'>"
 													+ "</button>"
@@ -82,6 +76,7 @@
 			<form name="updateForm" role="form" method="post"
 				action="<%=request.getContextPath()%>/notice/update"
 				enctype="multipart/form-data">
+				<input type="hidden" id="nId" name="nId" value="${NoticeVO.nId}">
 				<input type="hidden" id="fileNoDel" name="fileNoDel[]" value="">
 				<input type="hidden" id="fileNameDel" name="fileNameDel[]" value="">
 
@@ -106,8 +101,7 @@
 						<tr>
 							<div class="form-group">
 								<label for="title">제목</label> </br> <input type="text" name='title'
-									class="form-control" value="${NoticeVO.title}"
-									readonly="readonly">
+									class="form-control" value="${NoticeVO.title}">
 							</div>
 						</tr>
 
@@ -119,15 +113,13 @@
 						</tr>
 
 						<tr>
-							<td id="fileIndex"><c:forEach var="file" items="${file}" varStatus="var">
+							<td id="fileIndex">
+								<c:forEach var="file" items="${file}" varStatus="var">
 									<div class="upload-file">
-										<input type="hidden" id="fId" name="fId_${var.index}"
-											value="${file.fId}"> <input type="hidden"
-											id="FILE_NAME" name="FILE_NAME" value="fId_${var.index}">
-										<a href="#" id="fileName" onclick="return false;">${file.ORG_FILE_NAME}</a>(${file.FILE_SIZE} kb)
-										<button id="fileDel"
-											onclick="fn_del('${file.fId}','fId_${var.index}');"
-											type="button">삭제</button>
+										<input type="hidden" id="fId" name="fId_${var.index}" value="${file.FID}">
+										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="fId_${var.index}">
+										<a href="#" id="fileName" onclick="return false;">${file.ORG_FILE_NAME} </a>(${file.FILE_SIZE}kb)
+										<button id="fileDel" onclick="fn_del('${file.FID}','fId_${var.index}');" type="button">삭제</button>
 										<br>
 									</div>
 								</c:forEach></td>
@@ -137,7 +129,7 @@
 				<div class="box-footer">
 					<button type="submit" class="listBtn">수정하기</button>
 					<button type="submit" class="listBtn" id="cancel">목록으로</button>
-					<button id="fileAdd_btn" class="listBtn" type="button">파일첨부</button>
+					<button id="fileAdd_btn" class="listBtn" type="button">파일추가</button>
 				</div>
 
 

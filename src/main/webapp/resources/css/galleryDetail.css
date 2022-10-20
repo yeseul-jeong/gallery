@@ -1,0 +1,96 @@
+.pageWrap{
+	margin:70px;
+}
+
+/* 타이틀 */
+.page-header{
+	
+}
+.page-name {
+	background-color:black;
+	color:white;
+	width:300px;
+	height:40px;
+	text-align:center;
+	border-radius:20px 20px 20px 20px;
+	margin:0 auto 40px auto;
+	line-height:35px;
+}
+/* 타이틀 */
+
+
+/* 아트웍 */
+.formWrap {
+	width:100%;
+}
+
+.galleryImage{
+	width:80%;
+	margin:0 auto 0 auto;
+}
+
+.galleryImage img{
+	width:100%;
+}
+/* 아트웍 */
+
+/* 텍스트 */
+.form-group {
+	margin:0 auto 20px auto;
+	width:80%;
+	overflow:hidden;
+}
+
+.artContent {
+	width:49%;	
+	height:300px;
+	float:left;
+	margin-top:80px;
+	border-right:1px solid #000;
+}
+.artTitle {
+	text-align:left;
+	font-weight:bold;
+	padding-top:20px;
+}
+
+.artDesc {
+	width:90%;
+}
+
+.artistContent {
+	width:50%;	
+	height:300px;
+	margin-top:80px;
+	float:left;
+}
+.artistTitle {
+	text-align:left;
+	padding-top:20px;
+}
+.artistDesc {
+	width:90%;
+	margin-left:20px;
+}
+/* 텍스트 */
+
+/* 버튼 */
+.box-footer {
+	list-style:none;
+	text-decoration-line:none;
+	float: left;
+	padding: 6px;
+	width:100%;
+	margin:20px auto 30px auto;
+	text-align:center;
+}
+
+.listBtn {
+	color:#444;
+	text-align:center;
+	background-color:black;
+	color:white;
+	height:30px;
+	padding:3px 10px 3px 10px;
+}
+/* 버튼 */

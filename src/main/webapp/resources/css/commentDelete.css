@@ -1,0 +1,57 @@
+
+#root{
+	margin-top:200px;
+	width:100%;
+}
+.page-header{
+	
+}
+.page-name {
+	background-color:black;
+	color:white;
+	width:150px;
+	height:40px;
+	text-align:center;
+	border-radius:20px 20px 20px 20px;
+	margin:30px auto 30px auto;
+	line-height:35px;
+}
+
+.container {
+	width:45%;
+	margin:0 auto 0 auto;
+	text-align:center;
+}
+
+.updateForm {
+	margin:0 auto 0 auto;
+	text-align:center;
+}
+
+.line {
+	width:45%;
+}
+
+.buttonWrap{
+	margin:30px 0 30px 0;
+}
+
+.delete_btn {
+	color:#444;
+	font-size:0.8em;
+	text-align:center;
+	background-color:black;
+	color:white;
+	width:45px;
+	height:31px;
+}
+
+a {
+	text-decoration-line:none;
+	color:#444;
+	font-size:0.8em;
+	text-align:center;
+	background-color:black;
+	color:white;
+	padding:7px 10px 7px 10px;
+}

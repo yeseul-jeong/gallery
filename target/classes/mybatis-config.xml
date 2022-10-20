@@ -8,6 +8,7 @@
 	</settings>
 	<typeAliases>
 		<package name="com.gallery.notice" />
+		<package name="com.gallery.gallery" />
 	</typeAliases>
 
 </configuration>

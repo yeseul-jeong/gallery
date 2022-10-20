@@ -62,7 +62,6 @@ public class MemberController {
 	}
 	
 	private void addCookie(HttpServletResponse response, String id, int setMaxAge) {
-		logger.info("쿠키 생성 : {}", id);
 		Cookie cookieSaveId = new Cookie("saveId", id);
 		cookieSaveId.setMaxAge(setMaxAge);
 		response.addCookie(cookieSaveId);
@@ -92,7 +91,7 @@ public class MemberController {
 		MemberDTO loginData = memberService.submitLogin(member);
 		HttpSession session = request.getSession();
 		session.setAttribute("member", loginData); // 가입한 아이디로 로그인도 해주기
-		return alertMsgAndGoUrl(request, "회원가입이 완료되었습니다. 반갑습니다.", "home");
+		return alertMsgAndGoUrl(request, "회원가입이 완료되었습니다. 반갑습니다.", "/controller");
 	}
 
 	@RequestMapping(value = "/checkUniqueId.do")

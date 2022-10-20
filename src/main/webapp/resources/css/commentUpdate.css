@@ -1,0 +1,68 @@
+
+#root{
+	margin-top:200px;
+	width:100%;
+}
+.page-header{
+	
+}
+.page-name {
+	background-color:black;
+	color:white;
+	width:150px;
+	height:40px;
+	text-align:center;
+	border-radius:20px 20px 20px 20px;
+	margin:0 auto 40px auto;
+	line-height:35px;
+}
+
+.FormWrap {
+	width:45%;
+	margin:0 auto 0 auto;
+	text-align:center;
+}
+
+.updateForm {
+	margin:0 auto 0 auto;
+	text-align:center;
+}
+
+.modiWrap{
+	text-align:center;
+}
+
+#content {
+	width:100%;
+	height:50px;
+	margin:0 0 30px 0;
+}
+
+label {
+	color:#777;
+	line-height:35px;
+}
+
+.line {
+	width:45%;
+}
+
+.update_btn {
+	color:#444;
+	font-size:0.8em;
+	text-align:center;
+	background-color:black;
+	color:white;
+	width:45px;
+	height:31px;
+}
+
+.cancle_btn {
+	text-decoration-line:none;
+	color:#444;
+	font-size:0.8em;
+	text-align:center;
+	background-color:black;
+	color:white;
+	padding:7px 10px 7px 10px;
+}

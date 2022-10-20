@@ -84,7 +84,7 @@ public class FileUtils {
 			} 
 		}
 		if(files != null && fileNames != null){ 
-			for(int i = 0; i<fileNames.length; i++) {
+			for(int i = 0; i<fileNames.length-1; i++) {
 					listMap = new HashMap<String,Object>();
                     listMap.put("IS_NEW", "N");
 					listMap.put("fId", files[i]); 

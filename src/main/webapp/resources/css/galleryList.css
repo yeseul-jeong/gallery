@@ -1,0 +1,109 @@
+
+.listWrap {
+	width:100%;
+	height:100%;
+}
+
+/* 헤더 타이틀 */
+.page-wrap{
+	width:100%;
+	height:100%;
+}
+
+.page-header{
+	margin-top:150px;
+}
+.page-name {
+	background-color:black;
+	color:white;
+	width:150px;
+	height:40px;
+	text-align:center;
+	border-radius:20px 20px 20px 20px;
+	margin:0 auto 40px auto;
+}
+/* 헤더 타이틀 */
+
+/* 페이징 */
+
+.pageWrap {
+	width:100%;
+	height:50px;
+}
+
+.post-pagination {
+	list-style:none;
+}
+
+.post-pagination li a{
+	list-style:none;
+	text-decoration-line:none;
+	float:left;
+	background-color:black;
+	margin-right:10px;
+	color:white;
+	padding:3px;
+}
+/* 페이징 */
+
+
+/* 갤러리 리스트 */
+.galleryWrap{
+	width:100%;
+	overflow:hidden;
+	text-align:center;
+}
+
+.galleryListForm{
+	background-color:white;
+	width:33%;
+	height:33%;
+	text-align:center;
+	float:left;
+	margin: 0 2px 0 2px;
+}
+
+.galleryThumb{
+	height:650px;
+	opacity:0;
+}
+
+.galleryThumb .galleryImg {
+	object-fit:cover;
+	width:100%;
+	height:100%;
+	margin:0 auto 0 auto;
+}
+
+.galleryContent {
+	width:90%;
+	height:150px;
+	margin:30px auto 50px auto;
+}
+
+.galleryContent a{
+	text-decoration-line:none;
+	color:black;
+	padding-top:20px;
+}
+
+.galleryContent p{
+	color:#777;
+}
+
+#write_btn{
+	width:750px;
+	height:50px;
+	margin:0 auto 0 auto;
+	padding-right:30px;
+	text-align:right;
+	float:right;
+}
+.writeBtn{
+	text-decoration-line:none;
+	background-color:black;
+	color:white;
+	padding:3px 10px 3px 10px;
+}
+
+/* 갤러리 리스트 */

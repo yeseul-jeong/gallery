@@ -60,3 +60,12 @@ label {
 	height:30px;
 	padding:3px 10px 3px 10px;
 }
+
+.upload-file{
+	color:#777;
+	margin-bottom:7px;
+}
+#fileName{
+	text-decoration-line:none;
+	color:#777;
+}

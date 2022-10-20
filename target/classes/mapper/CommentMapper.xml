@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gallery.mapper.CommentMapper">
+
+	<resultMap type="com.gallery.notice.CommentVO" id="commentvo">
+		<result column="cId" property="cId" />
+		<result column="nId" property="nId"	/>	
+		<result column="mId" property="mId" />
+		<result column="content" property="content" />
+		<result column="regdate" property="regdate" />
+	</resultMap>
+	
+	
+	<!-- id 속성은 DAO 의 메소드와 같아야 한다. 여기의 boardVO 는 mybatis-confg.xml 에 Alias 되어 
+		있습니다. -->
+	<select id="list" resultType="com.gallery.notice.CommentVO">
+		select
+		cId, content, mId, regDate
+		from
+		noticeComment
+		where nId =
+		#{nId}
+	</select>
+
+	<select id="create">
+		insert into noticeComment (cId, nId, mId, content,regDate)
+		values
+		(cIdSeq.NEXTVAL, #{nId}, #{mId}, #{content}, sysdate)
+	</select>
+	
+	<update id="update">
+		update noticeComment set content = #{content}
+		where cId = #{cId}
+	</update>
+
+	<delete id="delete">
+		delete from noticeComment where cId =#{cId}
+	</delete>
+	
+	<select id="selectComment" resultType="com.gallery.notice.CommentVO">
+		SELECT
+				nId
+			  , cId
+			  , content
+			  , mId
+			  , regDate
+		  FROM noticeComment
+		 WHERE cId = #{cId}
+	</select>
+
+	<select id="listPage" resultType="CommentVO">
+		select * from (select rvresult.*, rownum as rnum
+		from ( select * from noticeComment
+		where nId = ${nId} order by cId desc)
+		rvresult where rownum &lt; ((#{cri.page} * #{cri.perPageNum})+1)
+		)
+		where rnum &gt;= (((#{cri.page} -1) * #{cri.perPageNum})+1)
+	</select>
+
+	<select id="count" resultType="int">
+		select count(cId) from noticeComment
+		where cId =#{cId}
+	</select>
+
+
+	<select id="getNId" resultType="int">
+		select nId from noticeComment where cId
+		= #{cId}
+	</select>
+	
+</mapper>

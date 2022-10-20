@@ -31,18 +31,13 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public NoticeVO read(Integer nId) throws Exception {
+	public NoticeVO read(int nId) throws Exception {
 			noticeMapper.noticeHit(nId);
 		return noticeMapper.read(nId);
 	}
 
 	@Override
-	public void update(NoticeVO vo) throws Exception {
-		noticeMapper.update(vo);
-	}
-
-	@Override
-	public void delete(Integer nId) throws Exception {
+	public void delete(int nId) throws Exception {
 		noticeMapper.delete(nId);
 	}
 
@@ -70,35 +65,25 @@ public class NoticeServiceImpl implements NoticeService {
 	public void update(NoticeVO vo, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest)
 			throws Exception {
 		noticeMapper.update(vo);
-
-		List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(vo, files, fileNames, mpRequest);
+		List<Map<String, Object>> fileList = fileUtils.parseUpdateFileInfo(vo, files, fileNames, mpRequest);
+		System.out.println("Filelist info = "+fileList); /* null */
 		Map<String, Object> tempMap = null;
-		int size = list.size();
+		int size = fileList.size();
 		for (int i = 0; i < size; i++) {
-			tempMap = list.get(i);
+			tempMap = fileList.get(i);
 			if (tempMap.get("IS_NEW").equals("Y")) {
 				noticeMapper.insertFile(tempMap);
 			} else {
 				noticeMapper.updateFile(tempMap);
 			}
-
 		}
 	}
-
-	@Override
-	public List<NoticeVO> adminList(SearchCriteria scri) throws Exception {
-		return noticeMapper.adminList(scri);
-	}
-
-	@Override
-	public int adminListCount(SearchCriteria scri) throws Exception {
-		return noticeMapper.adminListCount(scri);
-	}
 	
-	
-	/* 수정 */
+	/* 수정 필요 */
 	@Override
 	public void updateFile(Map<String, Object> map) throws Exception {
 		noticeMapper.updateFile(map);
 	}
+
+
 }

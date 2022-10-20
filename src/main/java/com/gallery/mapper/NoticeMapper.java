@@ -11,7 +11,7 @@ public interface NoticeMapper {
 	
 	public void write(NoticeVO vo) throws Exception;
 
-	public NoticeVO read(Integer nId) throws Exception;
+	public NoticeVO read(int nId) throws Exception;
 
 	public void update(NoticeVO vo) throws Exception;
 
@@ -23,15 +23,12 @@ public interface NoticeMapper {
 	
 	public void insertFile(Map<String, Object> map) throws Exception;
 	
-	public List<Map<String, Object>> selectFileList(Integer nId) throws Exception;
+	public List<Map<String, Object>> selectFileList(int nId) throws Exception;
 	
 	public Map<String, Object> selectFileInfo(Map<String, Object> map) throws Exception;
 	
 	public void updateFile(Map<String, Object> map) throws Exception;
 	
-	public List<NoticeVO> adminList(SearchCriteria scri) throws Exception;
-	
 	public void noticeHit (int nId) throws Exception;
 	
-	public int adminListCount(SearchCriteria scri) throws Exception;
 }
