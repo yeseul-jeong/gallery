@@ -10,6 +10,8 @@ public interface NoticeService {
   public void write(NoticeVO vo, MultipartHttpServletRequest communityRequest) throws Exception;
 
   public NoticeVO read(int nId) throws Exception;
+  
+  public void update(NoticeVO vo) throws Exception;
 
   public void update(NoticeVO vo, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest) throws Exception;
 

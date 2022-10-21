@@ -62,6 +62,7 @@
 		fileNameArry.push(name);
 		$("#fileNoDel").attr("value", fileNoArry);
 		$("#fileNameDel").attr("value", fileNameArry);
+
 	}
 </script>
 <%@ include file="../include/header.jspf"%>
@@ -84,7 +85,7 @@
 					<tbody>
 						<tr>
 							<div class="form-group">
-								<label for="nId">No</label> <input type="text" name='cNo'
+								<label for="nId">No</label> <input type="text" name='nId'
 									class="form-control" value="${NoticeVO.nId}"
 									readonly="readonly">
 							</div>
@@ -116,10 +117,10 @@
 							<td id="fileIndex">
 								<c:forEach var="file" items="${file}" varStatus="var">
 									<div class="upload-file">
-										<input type="hidden" id="fId" name="fId_${var.index}" value="${file.FID}">
-										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="fId_${var.index}">
-										<a href="#" id="fileName" onclick="return false;">${file.ORG_FILE_NAME} </a>(${file.FILE_SIZE}kb)
-										<button id="fileDel" onclick="fn_del('${file.FID}','fId_${var.index}');" type="button">삭제</button>
+										<input type="hidden" id="FID" name="FID_${var.index}" value="${file.FID}">
+										<input type="hidden" id="FILE_NAME" name="FILE_NAME" value="FID_${var.index}">
+										<a href="#" id="fileName" onclick="return false;">${file.ORG_FILE_NAME}</a>(${file.FILE_SIZE}kb)
+										<button id="fileDel" onclick="fn_del('${file.FID}','FID_${var.index}');" type="button">삭제</button>
 										<br>
 									</div>
 								</c:forEach></td>

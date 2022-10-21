@@ -64,13 +64,14 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void update(NoticeVO vo, String[] files, String[] fileNames, MultipartHttpServletRequest mpRequest)
 			throws Exception {
+		
 		noticeMapper.update(vo);
-		List<Map<String, Object>> fileList = fileUtils.parseUpdateFileInfo(vo, files, fileNames, mpRequest);
-		System.out.println("Filelist info = "+fileList); /* null */
+		
+		List<Map<String, Object>> list = fileUtils.parseUpdateFileInfo(vo, files, fileNames, mpRequest);
 		Map<String, Object> tempMap = null;
-		int size = fileList.size();
+		int size = list.size();
 		for (int i = 0; i < size; i++) {
-			tempMap = fileList.get(i);
+			tempMap = list.get(i);
 			if (tempMap.get("IS_NEW").equals("Y")) {
 				noticeMapper.insertFile(tempMap);
 			} else {
@@ -83,6 +84,11 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void updateFile(Map<String, Object> map) throws Exception {
 		noticeMapper.updateFile(map);
+	}
+
+	@Override
+	public void update(NoticeVO vo) throws Exception {
+		noticeMapper.update(vo);
 	}
 
 

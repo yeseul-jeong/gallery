@@ -95,18 +95,19 @@ public class NoticeController {
 
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void modifyGET(int nId, Model model) throws Exception {
+		
 		model.addAttribute("NoticeVO", service.read(nId));
 
 		List<Map<String, Object>> fileList = service.selectFileList(nId);
-		System.out.println("fileList Info + " + fileList);
 		model.addAttribute("file", fileList);
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String modifyPOST(NoticeVO vo, RedirectAttributes rttr, @RequestParam(value = "fileNoDel[]") String[] files,
-			@RequestParam(value = "fileNameDel[]") String[] fileNames, MultipartHttpServletRequest mpRequest)
+	public String modifyPOST(NoticeVO vo, RedirectAttributes rttr,
+			@RequestParam(value = "fileNoDel[]") String[] files,
+			@RequestParam(value = "fileNameDel[]") String[] fileNames,MultipartHttpServletRequest mpRequest)
 			throws Exception {
-
+	
 		service.update(vo, files, fileNames, mpRequest);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
